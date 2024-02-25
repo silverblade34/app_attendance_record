@@ -1,4 +1,5 @@
 import 'package:app_attendance_record/app/routes/pages.dart';
+import 'package:app_attendance_record/app/ui/themes/light_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -9,12 +10,8 @@ void main() async {
   runApp(
     GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: Routes.INITIAL,
-      theme: ThemeData(
-        fontFamily: 'Onest',
-        useMaterial3: true,
-        colorSchemeSeed: Colors.indigo,
-      ),
+      initialRoute: Routes.HOME,
+      theme: appThemeData,
       getPages: AppPages.pages,
       builder: (context, widget) {
         widget = EasyLoading.init()(context, widget);

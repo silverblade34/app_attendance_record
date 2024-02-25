@@ -1,7 +1,7 @@
 import 'package:app_attendance_record/app/controllers/login_controller.dart';
 import 'package:app_attendance_record/app/ui/pages/login/widgets/text_field.dart';
 import 'package:app_attendance_record/app/ui/pages/login/widgets/text_pass.dart';
-import 'package:app_attendance_record/app/utils/style_utils.dart';
+import 'package:app_attendance_record/app/ui/utils/style_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -22,14 +22,17 @@ class LoginPage extends GetView<LoginController> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(
-                    'assets/images/img_login.png',
-                    width: 200,
-                    height: 200,
+                    'assets/images/logo_prueba.png',
+                    width: 150,
+                    height: 150,
+                  ),
+                  const SizedBox(
+                    height: 10,
                   ),
                   const Text(
                     "Bienvenido/a al login!",
                     style: TextStyle(
-                      color: Color.fromARGB(255, 89, 101, 172),
+                      color: SECONDARY,
                       fontSize: 25,
                       fontWeight: FontWeight.w600,
                     ),
@@ -40,7 +43,7 @@ class LoginPage extends GetView<LoginController> {
                   const Text(
                     "Ingrese sus credenciales por favor",
                     style: TextStyle(
-                      color: SECONDARY,
+                      color: GREY_HARD,
                       fontSize: 16,
                     ),
                   ),
@@ -74,8 +77,8 @@ class LoginPage extends GetView<LoginController> {
                             },
                             style: ButtonStyle(
                               backgroundColor: MaterialStateColor.resolveWith(
-                                  (states) =>
-                                      const Color.fromARGB(255, 89, 101, 172)),
+                                (states) => SECONDARY,
+                              ),
                               padding: const MaterialStatePropertyAll(
                                 EdgeInsets.symmetric(
                                   vertical: 13,
