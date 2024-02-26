@@ -11,7 +11,7 @@ class LoginPage extends GetView<LoginController> {
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
-    final loginCL = Get.put(LoginController());
+    final controller = Get.put(LoginController());
     return Scaffold(
       body: SingleChildScrollView(
         child: SafeArea(
@@ -53,7 +53,7 @@ class LoginPage extends GetView<LoginController> {
                     child: Column(
                       children: [
                         TextFieldWidget(
-                          controller: loginCL.username,
+                          controller: controller.username,
                           text: "Usuario",
                           icon: Icons.person,
                           obscure: false,
@@ -64,8 +64,8 @@ class LoginPage extends GetView<LoginController> {
                         ),
                         //// PASSWORD INPUT
                         TextFieldPass(
-                            controller: loginCL.password,
-                            obs: loginCL.obscurePass),
+                            controller: controller.password,
+                            obs: controller.obscurePass),
                         const SizedBox(
                           height: 25,
                         ),
@@ -73,7 +73,7 @@ class LoginPage extends GetView<LoginController> {
                           width: double.infinity,
                           child: FilledButton(
                             onPressed: () {
-                              loginCL.validateCredentials();
+                              controller.validateCredentials();
                             },
                             style: ButtonStyle(
                               backgroundColor: MaterialStateColor.resolveWith(

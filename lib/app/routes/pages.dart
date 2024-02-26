@@ -1,3 +1,5 @@
+import 'package:app_attendance_record/app/bindings/home_binding.dart';
+import 'package:app_attendance_record/app/bindings/login_binding.dart';
 import 'package:app_attendance_record/app/ui/pages/home/home_page.dart';
 import 'package:app_attendance_record/app/ui/pages/login/login_page.dart';
 import 'package:app_attendance_record/app/ui/pages/splash/splash_page.dart';
@@ -8,15 +10,17 @@ abstract class AppPages {
   static final pages = [
     GetPage(
       name: Routes.INITIAL,
-      page: () => SplashPage(),
+      page: () => const SplashPage(),
     ),
     GetPage(
       name: Routes.HOME,
-      page: () => HomePage(),
+      page: () => const HomePage(),
+      binding: HomeBinding(),
     ),
     GetPage(
       name: Routes.LOGIN,
-      page: () => LoginPage(),
+      page: () => const LoginPage(),
+      binding: LoginBinding(),
     )
   ];
 }

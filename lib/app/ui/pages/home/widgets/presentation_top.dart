@@ -1,19 +1,10 @@
-import 'package:app_attendance_record/app/data/models/home/sections_today.dart';
+import 'package:app_attendance_record/app/controllers/home_controller.dart';
 import 'package:app_attendance_record/app/ui/utils/style_utils.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
-// ignore: must_be_immutable
-class PresentationTop extends StatelessWidget {
-  Rx<SectionsToday> dataSection;
-  RxString username;
 
-  PresentationTop(
-      {super.key, required this.dataSection, required this.username});
-
-  @override
-  Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
+// ignore: non_constant_identifier_names
+Container PresentationTop({required HomeController homeCL, required double screenWidth}) {
     return Container(
       width: screenWidth,
       decoration: const BoxDecoration(
@@ -32,7 +23,7 @@ class PresentationTop extends StatelessWidget {
             height: 10,
           ),
           Text(
-            "Hola, $username!",
+            "Hola, ${homeCL.username.value}!",
             style: const TextStyle(
               color: GREY_HARD,
               fontWeight: FontWeight.w800,
@@ -69,14 +60,14 @@ class PresentationTop extends StatelessWidget {
                         "Sección en curso",
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: MediaQuery.of(context).size.width * 0.035,
+                          fontSize: screenWidth * 0.035,
                         ),
                       ),
                       Text(
-                        dataSection.value.title,
+                        homeCL.sectionInProgress.value.title,
                         style: TextStyle(
                             color: Colors.white,
-                            fontSize: MediaQuery.of(context).size.width * 0.039,
+                            fontSize: screenWidth * 0.039,
                             fontWeight: FontWeight.bold),
                       )
                     ],
@@ -101,14 +92,14 @@ class PresentationTop extends StatelessWidget {
                         "Horario",
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: MediaQuery.of(context).size.width * 0.035,
+                          fontSize: screenWidth * 0.035,
                         ),
                       ),
                       Text(
-                        dataSection.value.schedule,
+                        homeCL.sectionInProgress.value.schedule,
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: MediaQuery.of(context).size.width * 0.039,
+                          fontSize: screenWidth * 0.039,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -124,5 +115,4 @@ class PresentationTop extends StatelessWidget {
         ],
       ),
     );
-  }
 }
