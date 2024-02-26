@@ -1,10 +1,9 @@
-import 'package:app_attendance_record/app/data/models/home/carrousel_courses.dart';
+import 'package:app_attendance_record/app/data/models/home/carrouselcourses_model.dart';
 import 'package:app_attendance_record/app/ui/utils/style_utils.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:infinite_carousel/infinite_carousel.dart';
-
 
 class CarrouselHorizontal extends StatefulWidget {
   final List<CarrouselCourse> dataCourses;
@@ -130,13 +129,25 @@ class _HorizontalState extends State<CarrouselHorizontal> {
                         const SizedBox(
                           height: 5,
                         ),
-                        const Text(
-                          "Ver más",
-                          textAlign: TextAlign.start,
-                          style: TextStyle(
-                            color: SECONDARY,
-                            decoration: TextDecoration.underline,
-                            decorationColor: SECONDARY,
+                        Expanded(
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 3, horizontal: 15),
+                            decoration: BoxDecoration(
+                              color: SECONDARY,
+                              borderRadius: BorderRadius.circular(7),
+                            ),
+                            child: const Center(
+                              child: Text(
+                                "Ver más",
+                                textAlign: TextAlign.start,
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  decoration: TextDecoration.underline,
+                                  decorationColor: SECONDARY,
+                                ),
+                              ),
+                            ),
                           ),
                         )
                       ],

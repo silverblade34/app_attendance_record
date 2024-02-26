@@ -1,4 +1,5 @@
-import 'package:app_attendance_record/app/data/models/home/sections_today.dart';
+import 'package:app_attendance_record/app/controllers/home_controller.dart';
+import 'package:app_attendance_record/app/data/models/home/sectionstoday_model.dart';
 import 'package:app_attendance_record/app/ui/utils/style_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:timelines/timelines.dart';
@@ -8,8 +9,13 @@ const kTileHeight = 70.0;
 // ignore: must_be_immutable
 class TimeLineSections extends StatelessWidget {
   List<SectionsToday> dataSectionsToday;
+  HomeController homeCL;
 
-  TimeLineSections({super.key, required this.dataSectionsToday});
+  TimeLineSections({
+    super.key,
+    required this.dataSectionsToday,
+    required this.homeCL,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -32,14 +38,14 @@ class TimeLineSections extends StatelessWidget {
         builder: TimelineTileBuilder.connected(
           indicatorBuilder: (context, index) {
             return DotIndicator(
-              color: data[index].isInProgress ? Color(0xff193fcc) : null,
+              color: data[index].isInProgress ? const Color(0xff193fcc) : null,
             );
           },
           connectorBuilder: (_, index, connectorType) {
-            var color;
+            Color? color;
             if (index == data.length - 1) {
               color = data[index].isInProgress && data[index + 1].isInProgress
-                  ? Color(0xff193fcc)
+                  ? const Color(0xff193fcc)
                   : null;
             }
             return SolidLineConnector(
@@ -48,8 +54,10 @@ class TimeLineSections extends StatelessWidget {
               color: color,
             );
           },
-          contentsBuilder: (context, index) =>
-              _EmptyContents(section: dataSectionsToday[index]),
+          contentsBuilder: (context, index) => _EmptyContents(
+            section: dataSectionsToday[index],
+            homeCL: homeCL,
+          ),
           itemExtentBuilder: (_, __) {
             return kTileHeight;
           },
@@ -60,10 +68,11 @@ class TimeLineSections extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class _EmptyContents extends StatelessWidget {
   SectionsToday section;
-
-  _EmptyContents({required this.section});
+  HomeController homeCL;
+  _EmptyContents({required this.section, required this.homeCL});
 
   @override
   Widget build(BuildContext context) {
@@ -125,7 +134,7 @@ class _EmptyContents extends StatelessWidget {
               ),
             ),
             onTap: () {
-              print("Ir a más detalles ${section.id}");
+              homeCL.selectSection(section.id);
             },
           )
         ],

@@ -84,6 +84,7 @@ class HomePage extends GetView<HomeController> {
                               ),
                               TimeLineSections(
                                 dataSectionsToday: homeCL.dataSectionsToday,
+                                homeCL: homeCL,
                               )
                             ],
                           ),

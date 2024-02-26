@@ -1,5 +1,5 @@
-import 'package:app_attendance_record/app/data/models/home/carrousel_courses.dart';
-import 'package:app_attendance_record/app/data/models/home/sections_today.dart';
+import 'package:app_attendance_record/app/data/models/home/carrouselcourses_model.dart';
+import 'package:app_attendance_record/app/data/models/home/sectionstoday_model.dart';
 import 'package:app_attendance_record/app/ui/pages/home/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -9,18 +9,74 @@ class HomeController extends GetxController {
   final box = GetStorage();
   final Rx<int> selectedIndex = 0.obs;
   final RxString username = RxString("Marcos");
-   Rx<SectionsToday> sectionInProgress = SectionsToday(
+  Rx<SectionsToday> sectionInProgress = SectionsToday(
     id: 0,
     title: "",
     schedule: "",
     state: 0,
   ).obs;
+  
+  Rx<Map<String, dynamic>> selectedSection = Rx<Map<String, dynamic>>({});
 
   final screens = [
     () => const HomePage(),
     () => const HomePage(),
     () => const HomePage(),
     () => const HomePage(),
+  ];
+
+  final sectionsCourses = [
+    {
+      "id": 1,
+      "name": "5C Aritmetica",
+      "schedule": "8:00am - 10:00am",
+      "students": [
+        {"id": 1, "name": "Juan", "lastname": "Espinoza Gutierrez"},
+        {"id": 2, "name": "Maria", "lastname": "Lopez Garcia"},
+        {"id": 3, "name": "Carlos", "lastname": "Martinez Ramirez"},
+        {"id": 4, "name": "Laura", "lastname": "Perez Hernandez"},
+        {"id": 5, "name": "Pedro", "lastname": "Gonzalez Rodriguez"},
+        {"id": 6, "name": "Ana", "lastname": "Sanchez Fernandez"},
+        {"id": 7, "name": "David", "lastname": "Torres Moreno"},
+        {"id": 8, "name": "Sofia", "lastname": "Diaz Chavez"},
+        {"id": 9, "name": "Diego", "lastname": "Alvarez Ruiz"},
+        {"id": 10, "name": "Fernanda", "lastname": "Gomez Santana"}
+      ]
+    },
+    {
+      "id": 2,
+      "name": "3A Trigonometria",
+      "schedule": "11:00am - 12:30am",
+      "students": [
+        {"id": 1, "name": "Juan", "lastname": "Espinoza Gutierrez"},
+        {"id": 2, "name": "Maria", "lastname": "Lopez Garcia"},
+        {"id": 3, "name": "Carlos", "lastname": "Martinez Ramirez"},
+        {"id": 4, "name": "Laura", "lastname": "Perez Hernandez"},
+        {"id": 5, "name": "Pedro", "lastname": "Gonzalez Rodriguez"},
+        {"id": 6, "name": "Ana", "lastname": "Sanchez Fernandez"},
+        {"id": 7, "name": "David", "lastname": "Torres Moreno"},
+        {"id": 8, "name": "Sofia", "lastname": "Diaz Chavez"},
+        {"id": 9, "name": "Diego", "lastname": "Alvarez Ruiz"},
+        {"id": 10, "name": "Fernanda", "lastname": "Gomez Santana"}
+      ]
+    },
+    {
+      "id": 3,
+      "name": "3B Algebra",
+      "schedule": "14:00pm - 15:30am",
+      "students": [
+        {"id": 11, "name": "Luis", "lastname": "Hernandez Perez"},
+        {"id": 12, "name": "Monica", "lastname": "Jimenez Ruiz"},
+        {"id": 13, "name": "Javier", "lastname": "Garcia Martinez"},
+        {"id": 14, "name": "Ana", "lastname": "Fernandez Gomez"},
+        {"id": 15, "name": "Pablo", "lastname": "Sanchez Rodriguez"},
+        {"id": 16, "name": "Elena", "lastname": "Gonzalez Garcia"},
+        {"id": 17, "name": "Ricardo", "lastname": "Perez Diaz"},
+        {"id": 18, "name": "Isabel", "lastname": "Martinez Lopez"},
+        {"id": 19, "name": "Alejandro", "lastname": "Santos Ramirez"},
+        {"id": 20, "name": "Lucia", "lastname": "Fernandez Perez"}
+      ]
+    }
   ];
 
   List<Destination> navigationDestinations = [
@@ -83,11 +139,18 @@ class HomeController extends GetxController {
   void onReady() {
     for (var section in dataSectionsToday) {
       if (section.state == 1) {
-        sectionInProgress.value = section; // Actualizamos el valor del observable
+        sectionInProgress.value = section;
         break;
       }
     }
     super.onReady();
+  }
+
+  selectSection(int idCourse) {
+    selectedSection.value =
+        sectionsCourses.firstWhere((section) => section['id'] == idCourse);
+    print(selectedSection.value);
+    Get.toNamed('/sectiontoday');
   }
 }
 
