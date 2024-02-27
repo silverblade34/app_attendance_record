@@ -144,7 +144,7 @@ class _HorizontalState extends State<CarrouselHorizontal> {
                                 style: TextStyle(
                                   color: Colors.white,
                                   decoration: TextDecoration.underline,
-                                  decorationColor: SECONDARY,
+                                  decorationColor: SECONDARY_LIGHT,
                                 ),
                               ),
                             ),

@@ -5,4 +5,5 @@ abstract class Routes {
   static const HOME = '/home';
   static const LOGIN = '/login';
   static const SECTION_TODAY = '/sectiontoday';
+  static const QR_SCANNER = '/qrscanner';
 }

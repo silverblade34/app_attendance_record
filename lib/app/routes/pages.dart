@@ -1,8 +1,10 @@
 import 'package:app_attendance_record/app/bindings/home_binding.dart';
 import 'package:app_attendance_record/app/bindings/login_binding.dart';
+import 'package:app_attendance_record/app/bindings/qrscan_binding.dart';
 import 'package:app_attendance_record/app/bindings/sectiontoday_binding.dart';
 import 'package:app_attendance_record/app/ui/pages/home/home_page.dart';
 import 'package:app_attendance_record/app/ui/pages/login/login_page.dart';
+import 'package:app_attendance_record/app/ui/pages/qrscan/qrscan_page.dart';
 import 'package:app_attendance_record/app/ui/pages/sectionToday/sectiontoday_page.dart';
 import 'package:app_attendance_record/app/ui/pages/splash/splash_page.dart';
 import 'package:get/get.dart';
@@ -28,6 +30,11 @@ abstract class AppPages {
       name: Routes.SECTION_TODAY,
       page: () => const SectionTodayPage(),
       binding: SectionTodayBinding(),
+    ),
+    GetPage(
+      name: Routes.QR_SCANNER,
+      page: () => const QrscanPage(),
+      binding: QrscanBinding(),
     )
   ];
 }
