@@ -20,7 +20,7 @@ class SectionTodayPage extends GetView<SectionTodayController> {
           centerTitle: true,
         ),
         body: SafeArea(
-          child: Column(
+          child: Stack(
             children: [
               SizedBox(
                 height: screenHeight - 170,
