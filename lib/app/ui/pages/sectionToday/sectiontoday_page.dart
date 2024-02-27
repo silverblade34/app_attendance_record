@@ -19,12 +19,47 @@ class SectionTodayPage extends GetView<SectionTodayController> {
           ),
           centerTitle: true,
         ),
+        backgroundColor: BACK_PAGES,
         body: SafeArea(
           child: Stack(
             children: [
-              SizedBox(
-                height: screenHeight - 170,
-                child: ListStudents(sectionTodayCL: sectionTodayCL),
+              SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 10),
+                      child: const Text(
+                        "Asistencia de alumnos",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          color: Color.fromARGB(255, 104, 104, 104),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: screenHeight - 70,
+                      child: Container(
+                        margin: const EdgeInsets.fromLTRB(15, 10, 15, 140),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.1),
+                              spreadRadius: 1,
+                              blurRadius: 2,
+                              offset: const Offset(0, 1),
+                            ),
+                          ],
+                        ),
+                        child: ListStudents(sectionTodayCL: sectionTodayCL),
+                      ),
+                    ),
+                  ],
+                ),
               ),
               Positioned(
                 left: 0,
@@ -33,45 +68,120 @@ class SectionTodayPage extends GetView<SectionTodayController> {
                 child: Container(
                   padding:
                       const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                  color: Colors.white,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color:
+                            Colors.grey.withOpacity(0.1), // Color de la sombra
+                        spreadRadius: 2, // Radio de expansión de la sombra
+                        blurRadius: 1, // Radio de desenfoque de la sombra
+                        offset: const Offset(0,
+                            2), // Desplazamiento de la sombra (horizontal, vertical)
+                      ),
+                    ],
+                  ),
                   child: Row(
                     children: [
                       Container(
                         padding: const EdgeInsets.all(10),
-                        child: const Icon(
-                          Icons.tune,
-                          size: 35,
-                          color: SECONDARY,
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            PopupMenuButton<String>(
+                              icon: const Icon(Icons.app_registration_rounded,
+                                  color: SECONDARY, size: 35),
+                              itemBuilder: (BuildContext context) =>
+                                  <PopupMenuEntry<String>>[
+                                const PopupMenuItem<String>(
+                                  value: 'Actividades',
+                                  child: ListTile(
+                                    leading: Icon(
+                                      Icons.work,
+                                      color: PRIMARY_HARD,
+                                    ),
+                                    title: Text(
+                                      'Actividades',
+                                      style: TextStyle(
+                                        fontSize: 15,
+                                        color: GREY_LIGHT,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                const PopupMenuItem<String>(
+                                  value: 'Tareas',
+                                  child: ListTile(
+                                    leading: Icon(
+                                      Icons.assignment,
+                                      color: PRIMARY_HARD,
+                                    ),
+                                    title: Text(
+                                      'Tareas',
+                                      style: TextStyle(
+                                        fontSize: 15,
+                                        color: GREY_LIGHT,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                const PopupMenuItem<String>(
+                                  value: 'Notas',
+                                  child: ListTile(
+                                    leading: Icon(
+                                      Icons.note,
+                                      color: PRIMARY_HARD,
+                                    ),
+                                    title: Text(
+                                      'Notas',
+                                      style: TextStyle(
+                                        fontSize: 15,
+                                        color: GREY_LIGHT,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                              onSelected: (String value) {
+                                print('Seleccionado: $value');
+                              },
+                            ),
+                          ],
                         ),
                       ),
                       const SizedBox(
                         width: 10,
                       ),
                       Expanded(
-                        child: Container(
-                          padding: const EdgeInsets.all(20),
-                          decoration: BoxDecoration(
-                            color: SECONDARY,
-                            borderRadius: BorderRadius.circular(10),
+                        child: InkWell(
+                          child: Container(
+                            padding: const EdgeInsets.all(20),
+                            decoration: BoxDecoration(
+                              color: SECONDARY,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: const Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  Icons.qr_code,
+                                  size: 30,
+                                  color: Colors.white,
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Text(
+                                  "Escanear QR",
+                                  style: TextStyle(
+                                      fontSize: 20, color: Colors.white),
+                                )
+                              ],
+                            ),
                           ),
-                          child: const Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(
-                                Icons.qr_code,
-                                size: 30,
-                                color: Colors.white,
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Text(
-                                "Escanear QR",
-                                style: TextStyle(
-                                    fontSize: 20, color: Colors.white),
-                              )
-                            ],
-                          ),
+                          onTap: () {
+                            print("-------------SE VA A ESCANEAR----------");
+                          },
                         ),
                       )
                     ],

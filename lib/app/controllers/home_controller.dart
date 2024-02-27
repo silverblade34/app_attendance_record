@@ -15,7 +15,7 @@ class HomeController extends GetxController {
     schedule: "",
     state: 0,
   ).obs;
-  
+
   Rx<Map<String, dynamic>> selectedSection = Rx<Map<String, dynamic>>({});
 
   final screens = [
@@ -30,17 +30,78 @@ class HomeController extends GetxController {
       "id": 1,
       "name": "5C Aritmetica",
       "schedule": "8:00am - 10:00am",
+      "date": "27/02/2024",
       "students": [
-        {"id": 1, "name": "Juan", "lastname": "Espinoza Gutierrez"},
-        {"id": 2, "name": "Maria", "lastname": "Lopez Garcia"},
-        {"id": 3, "name": "Carlos", "lastname": "Martinez Ramirez"},
-        {"id": 4, "name": "Laura", "lastname": "Perez Hernandez"},
-        {"id": 5, "name": "Pedro", "lastname": "Gonzalez Rodriguez"},
-        {"id": 6, "name": "Ana", "lastname": "Sanchez Fernandez"},
-        {"id": 7, "name": "David", "lastname": "Torres Moreno"},
-        {"id": 8, "name": "Sofia", "lastname": "Diaz Chavez"},
-        {"id": 9, "name": "Diego", "lastname": "Alvarez Ruiz"},
-        {"id": 10, "name": "Fernanda", "lastname": "Gomez Santana"}
+        {
+          "id": 1,
+          "name": "Juan",
+          "lastname": "Espinoza Gutierrez",
+          "attendanceStatus": false,
+          "arrivalTime": "-"
+        },
+        {
+          "id": 2,
+          "name": "Maria",
+          "lastname": "Lopez Garcia",
+          "attendanceStatus": false,
+          "arrivalTime": "-"
+        },
+        {
+          "id": 3,
+          "name": "Carlos",
+          "lastname": "Martinez Ramirez",
+          "attendanceStatus": true,
+          "arrivalTime": "8:01"
+        },
+        {
+          "id": 4,
+          "name": "Laura",
+          "lastname": "Perez Hernandez",
+          "attendanceStatus": false,
+          "arrivalTime": "7:00"
+        },
+        {
+          "id": 5,
+          "name": "Pedro",
+          "lastname": "Gonzalez Rodriguez",
+          "attendanceStatus": true,
+          "arrivalTime": "8:03"
+        },
+        {
+          "id": 6,
+          "name": "Ana",
+          "lastname": "Sanchez Fernandez",
+          "attendanceStatus": false,
+          "arrivalTime": "7:00"
+        },
+        {
+          "id": 7,
+          "name": "David",
+          "lastname": "Torres Moreno",
+          "attendanceStatus": false,
+          "arrivalTime": "7:00"
+        },
+        {
+          "id": 8,
+          "name": "Sofia",
+          "lastname": "Diaz Chavez",
+          "attendanceStatus": true,
+          "arrivalTime": "8:05"
+        },
+        {
+          "id": 9,
+          "name": "Diego",
+          "lastname": "Alvarez Ruiz",
+          "attendanceStatus": false,
+          "arrivalTime": "7:00"
+        },
+        {
+          "id": 10,
+          "name": "Fernanda",
+          "lastname": "Gomez Santana",
+          "attendanceStatus": false,
+          "arrivalTime": "7:00"
+        }
       ]
     },
     {
@@ -48,16 +109,76 @@ class HomeController extends GetxController {
       "name": "3A Trigonometria",
       "schedule": "11:00am - 12:30am",
       "students": [
-        {"id": 1, "name": "Juan", "lastname": "Espinoza Gutierrez"},
-        {"id": 2, "name": "Maria", "lastname": "Lopez Garcia"},
-        {"id": 3, "name": "Carlos", "lastname": "Martinez Ramirez"},
-        {"id": 4, "name": "Laura", "lastname": "Perez Hernandez"},
-        {"id": 5, "name": "Pedro", "lastname": "Gonzalez Rodriguez"},
-        {"id": 6, "name": "Ana", "lastname": "Sanchez Fernandez"},
-        {"id": 7, "name": "David", "lastname": "Torres Moreno"},
-        {"id": 8, "name": "Sofia", "lastname": "Diaz Chavez"},
-        {"id": 9, "name": "Diego", "lastname": "Alvarez Ruiz"},
-        {"id": 10, "name": "Fernanda", "lastname": "Gomez Santana"}
+        {
+          "id": 1,
+          "name": "Juan",
+          "lastname": "Espinoza Gutierrez",
+          "attendanceStatus": true,
+          "arrivalTime": "7:00"
+        },
+        {
+          "id": 2,
+          "name": "Maria",
+          "lastname": "Lopez Garcia",
+          "attendanceStatus": true,
+          "arrivalTime": "7:00"
+        },
+        {
+          "id": 3,
+          "name": "Carlos",
+          "lastname": "Martinez Ramirez",
+          "attendanceStatus": false,
+          "arrivalTime": "-"
+        },
+        {
+          "id": 4,
+          "name": "Laura",
+          "lastname": "Perez Hernandez",
+          "attendanceStatus": false,
+          "arrivalTime": "-"
+        },
+        {
+          "id": 5,
+          "name": "Pedro",
+          "lastname": "Gonzalez Rodriguez",
+          "attendanceStatus": false,
+          "arrivalTime": "-"
+        },
+        {
+          "id": 6,
+          "name": "Ana",
+          "lastname": "Sanchez Fernandez",
+          "attendanceStatus": true,
+          "arrivalTime": "7:00"
+        },
+        {
+          "id": 7,
+          "name": "David",
+          "lastname": "Torres Moreno",
+          "attendanceStatus": true,
+          "arrivalTime": "7:00"
+        },
+        {
+          "id": 8,
+          "name": "Sofia",
+          "lastname": "Diaz Chavez",
+          "attendanceStatus": true,
+          "arrivalTime": "7:00"
+        },
+        {
+          "id": 9,
+          "name": "Diego",
+          "lastname": "Alvarez Ruiz",
+          "attendanceStatus": true,
+          "arrivalTime": "7:00"
+        },
+        {
+          "id": 10,
+          "name": "Fernanda",
+          "lastname": "Gomez Santana",
+          "attendanceStatus": true,
+          "arrivalTime": "7:00"
+        }
       ]
     },
     {
@@ -65,16 +186,76 @@ class HomeController extends GetxController {
       "name": "3B Algebra",
       "schedule": "14:00pm - 15:30am",
       "students": [
-        {"id": 11, "name": "Luis", "lastname": "Hernandez Perez"},
-        {"id": 12, "name": "Monica", "lastname": "Jimenez Ruiz"},
-        {"id": 13, "name": "Javier", "lastname": "Garcia Martinez"},
-        {"id": 14, "name": "Ana", "lastname": "Fernandez Gomez"},
-        {"id": 15, "name": "Pablo", "lastname": "Sanchez Rodriguez"},
-        {"id": 16, "name": "Elena", "lastname": "Gonzalez Garcia"},
-        {"id": 17, "name": "Ricardo", "lastname": "Perez Diaz"},
-        {"id": 18, "name": "Isabel", "lastname": "Martinez Lopez"},
-        {"id": 19, "name": "Alejandro", "lastname": "Santos Ramirez"},
-        {"id": 20, "name": "Lucia", "lastname": "Fernandez Perez"}
+        {
+          "id": 11,
+          "name": "Luis",
+          "lastname": "Hernandez Perez",
+          "attendanceStatus": false,
+          "arrivalTime": "-"
+        },
+        {
+          "id": 12,
+          "name": "Monica",
+          "lastname": "Jimenez Ruiz",
+          "attendanceStatus": true,
+          "arrivalTime": "7:00"
+        },
+        {
+          "id": 13,
+          "name": "Javier",
+          "lastname": "Garcia Martinez",
+          "attendanceStatus": true,
+          "arrivalTime": "7:00"
+        },
+        {
+          "id": 14,
+          "name": "Ana",
+          "lastname": "Fernandez Gomez",
+          "attendanceStatus": true,
+          "arrivalTime": "7:00"
+        },
+        {
+          "id": 15,
+          "name": "Pablo",
+          "lastname": "Sanchez Rodriguez",
+          "attendanceStatus": false,
+          "arrivalTime": "-"
+        },
+        {
+          "id": 16,
+          "name": "Elena",
+          "lastname": "Gonzalez Garcia",
+          "attendanceStatus": true,
+          "arrivalTime": "7:00"
+        },
+        {
+          "id": 17,
+          "name": "Ricardo",
+          "lastname": "Perez Diaz",
+          "attendanceStatus": true,
+          "arrivalTime": "7:00"
+        },
+        {
+          "id": 18,
+          "name": "Isabel",
+          "lastname": "Martinez Lopez",
+          "attendanceStatus": true,
+          "arrivalTime": "7:00"
+        },
+        {
+          "id": 19,
+          "name": "Alejandro",
+          "lastname": "Santos Ramirez",
+          "attendanceStatus": false,
+          "arrivalTime": "-"
+        },
+        {
+          "id": 20,
+          "name": "Lucia",
+          "lastname": "Fernandez Perez",
+          "attendanceStatus": true,
+          "arrivalTime": "7:00"
+        }
       ]
     }
   ];

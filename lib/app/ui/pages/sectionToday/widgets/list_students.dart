@@ -21,41 +21,63 @@ class ListStudents extends StatelessWidget {
     return ListView.builder(
       itemCount: students.length,
       itemBuilder: (context, index) {
-        final currentSyllabus = students[index];
+        final studentAttendance = students[index];
         final isLastItem = index == students.length - 1;
+
+        Widget trailingIcon;
+        if (studentAttendance['attendanceStatus'] == true) {
+          trailingIcon = const Icon(
+            Icons.check_circle_outline,
+            color: Color.fromARGB(255, 78, 202, 82),
+          );
+        } else {
+          trailingIcon = const Icon(
+            Icons.cancel_outlined,
+            color: Color.fromARGB(255, 248, 139, 132),
+          );
+        }
         return Column(
           children: [
             ListTile(
               leading: const CircleAvatar(
-                backgroundColor: PRIMARY,
+                backgroundColor: PRIMARY_LIGHT,
                 child: Icon(
                   Icons.person,
                   color: Colors.white,
                 ),
               ),
               title: Text(
-                currentSyllabus['lastname'] ?? '',
+                studentAttendance['lastname'] ?? '',
                 style: const TextStyle(
                   fontFamily: 'Poppins',
                   color: Color.fromARGB(255, 65, 65, 65),
+                  fontSize: 15
                 ),
               ),
               subtitle: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    truncateDescription(currentSyllabus['name'] ?? ''),
+                    truncateDescription(studentAttendance['name'] ?? ''),
                     style: const TextStyle(fontSize: 15),
                   ),
                 ],
               ),
-              trailing: const Icon(Icons.check_circle, color: Colors.green,),
-            ),
-            const Divider(),
-            if (isLastItem)
-              const SizedBox(
-                height: 10,
+              trailing: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  trailingIcon,
+                  Text(
+                    studentAttendance['attendanceStatus'] == true
+                        ? studentAttendance['arrivalTime']
+                        : "-",
+                    style: const TextStyle(color: TEXT_LIGHT, fontSize: 13),
+                  ),
+                ],
               ),
+            ),
+            if (!isLastItem) const Divider(),
           ],
         );
       },

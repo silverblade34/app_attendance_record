@@ -76,6 +76,7 @@ class _EmptyContents extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Color backgroundColor = section.state == 1 ? PRIMARY : const Color(0xffc2c5c9);
     return Container(
       margin: const EdgeInsets.only(left: 20.0, top: 17),
       decoration: BoxDecoration(
@@ -126,7 +127,7 @@ class _EmptyContents extends StatelessWidget {
               margin: const EdgeInsets.only(bottom: 10),
               padding: const EdgeInsets.all(5),
               decoration: BoxDecoration(
-                  color: PRIMARY, borderRadius: BorderRadius.circular(5)),
+                  color: backgroundColor, borderRadius: BorderRadius.circular(5)),
               child: const Icon(
                 Icons.arrow_forward_ios,
                 size: 15,

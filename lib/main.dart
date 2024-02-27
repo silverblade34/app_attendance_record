@@ -10,7 +10,7 @@ void main() async {
   runApp(
     GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: Routes.INITIAL,
+      initialRoute: Routes.HOME,
       theme: appThemeData,
       getPages: AppPages.pages,
       builder: (context, widget) {
