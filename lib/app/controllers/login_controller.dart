@@ -1,12 +1,17 @@
+import 'package:app_attendance_record/app/data/repositories/login/login_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 class LoginController extends GetxController {
   final TextEditingController username = TextEditingController();
   final TextEditingController password = TextEditingController();
   RxBool obscurePass = RxBool(true);
- validateCredentials() {
+  LoginRepository loginRepository = LoginRepository();
+  final box = GetStorage();
+
+  validateCredentials() async {
     if (username.text.isEmpty && password.text.isEmpty) {
       EasyLoading.showInfo("Los campos usuario y contraseña están vacios");
     } else if (username.text.isEmpty) {
@@ -14,9 +19,17 @@ class LoginController extends GetxController {
     } else if (password.text.isEmpty) {
       EasyLoading.showInfo("Campo contraseña vacío");
     } else {
-      if (username.text == "marcos" && password.text == "marcos--//") {
-        Get.offAllNamed('/home');
-      } else {
+      EasyLoading.show(status: 'Cargando...');
+      try {
+        final validate =
+            await loginRepository.authLogin(username.text, password.text);
+        box.write("name", validate.data.name);
+        box.write("token", validate.data.token);
+        EasyLoading.dismiss();
+        Get.toNamed('/home');
+      } catch (e) {
+        print("---------------------------------3");
+        print(e);
         EasyLoading.showInfo("Credenciales incorrectas");
       }
     }
