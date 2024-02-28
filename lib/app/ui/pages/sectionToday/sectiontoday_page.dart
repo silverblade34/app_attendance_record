@@ -1,4 +1,5 @@
 import 'package:app_attendance_record/app/controllers/sectiontoday_controller.dart';
+import 'package:app_attendance_record/app/ui/pages/sectionToday/widgets/qr_scan.dart';
 import 'package:app_attendance_record/app/ui/pages/sectionToday/widgets/list_students.dart';
 import 'package:app_attendance_record/app/ui/utils/style_utils.dart';
 import 'package:flutter/material.dart';
@@ -180,7 +181,7 @@ class SectionTodayPage extends GetView<SectionTodayController> {
                             ),
                           ),
                           onTap: () {
-                           
+                            Get.to(() => const QRViewExample());
                           },
                         ),
                       )

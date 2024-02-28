@@ -9,14 +9,10 @@ class LoginRepository {
     if (response.body == null) {
       throw Exception("No se recibieron datos en la respuesta");
     } else if (response.statusCode == 401) {
-       print("----------------------------------------401");
       throw Exception("Credenciales incorrectas");
     }
     final body = response.body;
     AuthResponseModel user = AuthResponseModel.fromJson(body);
-    print("----------------------------------------");
-    print(user);
-    print("----------------------------------------");
     return user;
   }
 }

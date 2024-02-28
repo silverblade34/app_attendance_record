@@ -28,9 +28,8 @@ class LoginController extends GetxController {
         EasyLoading.dismiss();
         Get.toNamed('/home');
       } catch (e) {
-        print("---------------------------------3");
-        print(e);
-        EasyLoading.showInfo("Credenciales incorrectas");
+        String errorMessage = e.toString().split(":")[1].trim();
+        EasyLoading.showInfo(errorMessage);
       }
     }
   }

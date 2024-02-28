@@ -8,7 +8,7 @@ import 'package:get_storage/get_storage.dart';
 class HomeController extends GetxController {
   final box = GetStorage();
   final Rx<int> selectedIndex = 0.obs;
-  final RxString username = RxString("Marcos");
+  final RxString username = RxString("");
   Rx<SectionsToday> sectionInProgress = SectionsToday(
     id: 0,
     title: "",
@@ -318,6 +318,7 @@ class HomeController extends GetxController {
 
   @override
   void onReady() {
+    username.value = box.read("name");
     for (var section in dataSectionsToday) {
       if (section.state == 1) {
         sectionInProgress.value = section;
@@ -330,7 +331,6 @@ class HomeController extends GetxController {
   selectSection(int idCourse) {
     selectedSection.value =
         sectionsCourses.firstWhere((section) => section['id'] == idCourse);
-    print(selectedSection.value);
     Get.toNamed('/sectiontoday');
   }
 }
