@@ -40,7 +40,7 @@ class SectionTodayPage extends GetView<SectionTodayController> {
                       ),
                     ),
                     SizedBox(
-                      height: screenHeight - 70,
+                      height: screenHeight - 50,
                       child: Container(
                         margin: const EdgeInsets.fromLTRB(15, 10, 15, 140),
                         decoration: BoxDecoration(
@@ -67,7 +67,7 @@ class SectionTodayPage extends GetView<SectionTodayController> {
                 bottom: 0,
                 child: Container(
                   padding:
-                      const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                      const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     boxShadow: [
@@ -155,7 +155,7 @@ class SectionTodayPage extends GetView<SectionTodayController> {
                       Expanded(
                         child: InkWell(
                           child: Container(
-                            padding: const EdgeInsets.all(20),
+                            padding: const EdgeInsets.all(10),
                             decoration: BoxDecoration(
                               color: SECONDARY,
                               borderRadius: BorderRadius.circular(10),
